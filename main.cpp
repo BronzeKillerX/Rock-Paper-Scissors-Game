@@ -2,6 +2,9 @@
 #include <random>
 
 void seriesGameMode(int range) {
+
+	std::string moves[] = { "Rock", "Paper", "Scissors" };
+
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	int drawCount = 0;
@@ -35,67 +38,25 @@ void seriesGameMode(int range) {
 		//checking move with computer and giving verdict win - draw - loss
 		int computerMove = distr(gen);
 
-		if (playerMove == 1) {
-			if (playerMove == computerMove) {
-				std::cout << "\nYour move was Rock.\n";
-				std::cout << "Computer Move was Rock.\n";
-				std::cout << "This round is a draw.\n";
-				drawCount++;
-			}
-			else if (computerMove == 2) {
-				std::cout << "\nYour move was Rock.\n";
-				std::cout << "Computer move was Paper.\n";
-				std::cout << "You lose this round.\n";
-				loseCount++;
-			}
-			else if (computerMove == 3) {
-				std::cout << "\nYour move was Rock.\n";
-				std::cout << "Computer move was Scissors.\n";
-				std::cout << "You win this round.\n";
-				winCount++;
-			}
-		} else if (playerMove == 2){
-			if (playerMove == computerMove) {
-				std::cout << "\nYour Move was Paper.\n";
-				std::cout << "Computer move was Paper.\n";
-				std::cout << "This round is a draw.\n";
-				drawCount++;
-			}
-			else if (computerMove == 1) {
-				std::cout << "\nYour move was Paper.\n";
-				std::cout << "Computer move was Rock.\n";
-				std::cout << "You win this round.\n";
-				winCount++;
-			}
-			else if (computerMove == 3) {
-				std::cout << "\nYour move was Paper.\n";
-				std::cout << "Computer move was Scissors.\n";
-				std::cout << "You lose this round.\n";
-				loseCount++;
-			}
+		std::cout << "\nYour move was " << moves[playerMove - 1] << std::endl;
+		std::cout << "Computer move was " << moves[computerMove - 1] << std::endl;
+
+		if (playerMove == computerMove) {
+			std::cout << "This round is a draw\n";
+			drawCount++;
 		}
-		else if (playerMove == 3) {
-			if (playerMove == computerMove) {
-				std::cout << "\nYour move was Scissors.\n";
-				std::cout << "Computer move was Scissors.\n";
-				std::cout << "This round is a draw";
-				drawCount++;
-			}
-			else if (computerMove == 1) {
-				std::cout << "\nYour move was Scissors.\n";
-				std::cout << "Computer move was Rock.\n";
-				std::cout << "You lose this round.\n";
-				loseCount++;
-			}
-			else if (computerMove == 2) {
-				std::cout << "\nYour move was Scissors.\n";
-				std::cout << "Computer move was Paper.\n";
-				std::cout << "You win this round.\n";
-				winCount++;
-			}
+		else if ((playerMove == 1 && computerMove == 3) || (playerMove == 2 && computerMove == 1) || (playerMove == 3 && computerMove == 2)) {
+			std::cout << "You win this round\n";
+			winCount++;
+		}
+		else
+		{
+			std::cout << "You lose this round\n";
+			loseCount++;
 		}
 		
-		std::cout << "\n Press Enter to continue to the next round";
+		std::cout << "\nPress Enter to continue to the next round";
+		std::cin.ignore(1000, '\n');
 		std::cin.get();
 
 	}
@@ -106,19 +67,16 @@ void seriesGameMode(int range) {
 	std::cout << "Draw: " << drawCount << std::endl;
 	std::cout << "Lose: " << loseCount << std::endl;
 	std::cout << "Win : " << winCount << std::endl;
-	std::cout << "\n--------------------------------------------\n";
+	std::cout << "\n----------------------------------------\n";
 
 	std::cout << "\nPress Enter to continue";
-	std::cin.ignore(1000, '\n');
 	std::cin.get();
 }
 
-void endlessGameMode();
-
 int main (){
-	std::system("cls");
 	int choice;
 	do {
+		std::system("cls");
 		std::cout << "================================================\n";
 		std::cout << "              Rock-Paper-Scissors               \n";
 		std::cout << "================================================\n";
