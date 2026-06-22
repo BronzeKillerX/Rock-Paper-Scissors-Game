@@ -73,6 +73,15 @@ void seriesGameMode(int range) {
 	std::cin.get();
 }
 
+void endlessGameMode() {
+	char choice = ' ';
+	do {
+		std::system("cls");
+		std::cout << "============================================\n";
+		std::cout << "               Endless Mode                 \n";
+		std::cout << "============================================\n";
+	} while (choice != 'n');
+}
 int main (){
 	int choice;
 	do {
