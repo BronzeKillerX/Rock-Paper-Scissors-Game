@@ -70,7 +70,13 @@ void seriesGameMode(int range) {
 
 	if ((winCount > loseCount) && (winCount > drawCount)) {
 		std::cout << "You win!!!";
-	}else if ((drawCount > winCount) && (drawCount > loseCount))
+	}
+	else if ((drawCount > winCount) && (drawCount > loseCount)) {
+		std::cout << "It was a draw!!!";
+	}
+	else {
+		std::cout << "Computer wins!!!";
+	}
 
 	std::cout << "\n----------------------------------------\n";
 
@@ -159,10 +165,22 @@ void endlessGameMode() {
 	std::cout << "Draw: " << drawCount << std::endl;
 	std::cout << "Lose: " << loseCount << std::endl;
 	std::cout << "Win : " << winCount << std::endl;
+
+	if ((winCount > loseCount) && (winCount > drawCount)) {
+		std::cout << "You win!!!";
+	}
+	else if ((drawCount > winCount) && (drawCount > loseCount)) {
+		std::cout << "It was a draw!!!";
+	}
+	else {
+		std::cout << "Computer wins!!!";
+	}
+
 	std::cout << "\n----------------------------------------\n";
 	std::cout << "\nPress Enter to continue";
 	std::cin.get();
 }
+
 int main (){
 	int choice;
 	do {
